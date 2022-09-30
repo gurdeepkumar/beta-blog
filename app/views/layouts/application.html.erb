@@ -10,6 +10,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
+  <% flash.each do |name, msg| %>
+    <%= msg %>
+  <% end %>
   <body>
     <%= yield %>
   </body>
