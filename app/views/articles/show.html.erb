@@ -1,9 +1,21 @@
-<h1>Show Page</h1>
-
-<h3>Title: <%= @article.title %></h3>
-<p>Description: <%= @article.description %></p>
-
-<p><%= link_to 'Create a new article', new_article_path  %></p>
-<p><%= link_to 'Articles Page', articles_path %></p>
-<p><%= link_to 'Home Page', root_path %></p>
-<p><%= link_to 'About Page', about_path %></p>
+<div class="container">
+  <h1 class= "text-center m-4"><%= @article.title %></h1>
+  <div class="row justify-content-md-center">
+    <div class="col-8">
+      <div class="card text-center m-3">
+        <div class="card-header">
+          By Gurdeep kumar
+        </div>
+        <div class="card-body">
+          <p class="card-text"><%= @article.description %></p>
+          <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-warning" %>
+          <%= link_to 'Delete', article_path(@article), class: "btn btn-danger", data: { "turbo-method": :delete, turbo_confirm: "Are you sure ?" } %>
+        </div>
+        <div class="card-footer text-muted">
+          Created ago <%= time_ago_in_words(@article.created_at)%>,
+          Updated ago ago <%= time_ago_in_words(@article.updated_at)%>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>
